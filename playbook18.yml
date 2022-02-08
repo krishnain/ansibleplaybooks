@@ -1,0 +1,15 @@
+---
+- name: Implementing when conditions
+  hosts: all
+  vars:
+   - a: 10
+  tasks:
+   - name: Create user
+     user:
+      name: Ramu
+      password: intelliqit
+      home: /home/Ramu
+      shell: /bin/bash
+     when: a == 10
+...
+

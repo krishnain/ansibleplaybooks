@@ -1,0 +1,14 @@
+---
+- name: Install s/w applications uisng playscope variables
+  hosts: all
+  vars:
+   - a: tomcat9
+   - b: present
+   - c: no
+  tasks:
+   - name: Install/uninstall s/w
+     apt:
+      name: "{{a}}"
+      state: "{{b}}"
+      update_cache: "{{c}}"
+...

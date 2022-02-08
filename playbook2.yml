@@ -1,0 +1,27 @@
+---
+- name: Configuring apache2
+  hosts: dbserver
+  tasks:
+   - name: Install apache2
+     apt:
+      name: apache2
+      state: present
+      update_cache: yes
+   - name: Edit the idnex.html file
+     copy:
+      dest: /var/www/html/index.html
+      content: "IntelliQIt"
+   - name: Restart apache2
+     service:
+      name: apache2
+      state: restarted
+   - name: Check apache2 on server1
+     uri:
+      url: http://172.31.16.84
+      status_code: 200
+   - name: Check apache2 on server2
+     uri:
+      url: http://172.31.29.58
+      status_code: 200
+
+...
